@@ -22,7 +22,7 @@ def move_vertices(obj_file, sentence):
     if len(vertices) < len(sentence):
         print("Not enough vertices in the OBJ file for the given sentence.")
         return
-    print("vertices in obj", len(vertices))
+    print("--- vertices in obj", len(vertices))
     fraction = 0.001
     centroid = calculate_centroid(vertices)
 
@@ -78,16 +78,14 @@ def extract_message(original_obj_file, modified_obj_file):
 
 
 # Replace 'input.obj' with the path to your OBJ file
-input_obj_file = 'n.obj'
+input_obj_file_name = 'n.obj'
+new_obj_file_name = input_obj_file_name.split('.')[0] + '_decrypt.obj'
 
 
-# Replace 'hello' with your input sentence
-input_sentence_1 = 'Privacy is crucial in the digital era for an open society - not secrecy, but selectively revealing oneself. Transactions should share only necessary info - anonymitys vital. Cypherpunks advocate for anonymous systems, oppose encryption regulations, and defend privacy through code. For privacy to flourish, societal agreement is key. Eric Hughes hughes@soda.berkeley.edu 9 March 1993 K i t K P i d d w E a x n h e r N D k u B p C G u N K o M E Z h w Z k G D R Q s e T k I V e H S S'
-input_sentence = input()
-print("len of sentence", len(input_sentence))
-move_vertices(input_obj_file, input_sentence)
+# input_sentence_1 = 'Privacy is crucial in the digital era for an open society - not secrecy, but selectively revealing oneself. Transactions should share only necessary info - anonymitys vital. Cypherpunks advocate for anonymous systems, oppose encryption regulations, and defend privacy through code. For privacy to flourish, societal agreement is key. Eric Hughes hughes@soda.berkeley.edu 9 March 1993 K i t K P i d d w E a x n h e r N D k u B p C G u N K o M E Z h w Z k G D R Q s e T k I V e H S S'
+input_sentence = input("Input your text: ")
+print("--- len of sentence", len(input_sentence))
+move_vertices(input_obj_file_name, input_sentence)
 
-# Usage example:
-# Replace 'input_modified.obj' with the path to your modified OBJ file
-extracted = extract_message('n.obj', 'n_decrypt.obj')
-print("Extracted message:", extracted)
+extracted = extract_message(input_obj_file_name, new_obj_file_name)
+print("\nExtracted message:", extracted)
